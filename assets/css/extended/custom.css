@@ -158,6 +158,60 @@ body {
     color: var(--theme);
 }
 
+/* 文章底部 GitHub 主页链接 */
+.post-github {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--primary);
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.post-github:hover {
+    border-color: var(--accent-border);
+    background: var(--accent-soft);
+}
+
+.post-github svg {
+    flex: none;
+    width: 24px;
+    height: 24px;
+}
+
+.post-github-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.post-github-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.post-github-url {
+    font-size: 13px;
+    color: var(--secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post-github-arrow {
+    margin-inline-start: auto;
+    color: var(--secondary);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.post-github:hover .post-github-arrow {
+    color: var(--accent);
+    transform: translateX(3px);
+}
+
 /* 导航菜单图标 */
 .menu-icon {
     width: 16px;

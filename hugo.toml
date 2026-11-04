@@ -12,7 +12,6 @@ theme = 'hugo-PaperMod'
   showReadingTime = true
   showToc = true
   showShareButtons = true
-  shareButtons = ["x", "telegram"]
   ShowCodeCopyButtons = true
   ShowPostNavLinks = true
   ShowWordCount = true

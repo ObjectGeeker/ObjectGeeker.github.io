@@ -1,0 +1,12 @@
+{{- /* 覆盖主题的分享按钮：文章底部改为显示 GitHub 主页链接，地址取自 params.socialIcons */ -}}
+{{- range where site.Params.socialIcons "name" "github" }}
+{{- $url := trim .url " " }}
+<a class="post-github" href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer me">
+    {{ partial "svg.html" . }}
+    <span class="post-github-text">
+        <span class="post-github-label">在 GitHub 上找到我</span>
+        <span class="post-github-url">{{ replaceRE `^https?://` "" $url }}</span>
+    </span>
+    <span class="post-github-arrow" aria-hidden="true">→</span>
+</a>
+{{- end }}
