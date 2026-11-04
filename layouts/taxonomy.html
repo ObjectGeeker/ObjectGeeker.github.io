@@ -1,0 +1,58 @@
+{{- /* 覆盖主题的 taxonomy.html：分类用卡片展示，标签用按文章数缩放的标签云 */ -}}
+{{- define "main" }}
+
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- $terms := .Data.Terms.ByCount }}
+    <div class="post-description">
+        共 {{ len $terms }} 个{{ cond (eq .Data.Plural "categories") "分类" "标签" }}
+    </div>
+</header>
+
+{{- if eq .Data.Plural "categories" }}
+<ul class="category-grid">
+    {{- range .Data.Terms.ByCount }}
+    {{- with .Page }}
+    <li class="category-card">
+        <a class="category-head" href="{{ .Permalink }}">
+            <span class="category-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            </span>
+            <span class="category-name">{{ .LinkTitle }}</span>
+            <span class="category-count">{{ len .Pages }} 篇</span>
+        </a>
+        {{- with .Description }}
+        <p class="category-desc">{{ . }}</p>
+        {{- end }}
+        <ul class="category-posts">
+            {{- range first 3 .Pages.ByDate.Reverse }}
+            <li>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+            </li>
+            {{- end }}
+        </ul>
+    </li>
+    {{- end }}
+    {{- end }}
+</ul>
+
+{{- else }}
+{{- $max := 1 }}
+{{- range .Data.Terms }}{{ if gt .Count $max }}{{ $max = .Count }}{{ end }}{{ end }}
+<ul class="tag-cloud">
+    {{- range .Data.Terms.ByCount }}
+    {{- $count := .Count }}
+    {{- with .Page }}
+    <li>
+        <a href="{{ .Permalink }}" style="--w: {{ div (float $count) $max }}">
+            <span class="tag-hash" aria-hidden="true">#</span>{{ .LinkTitle }}
+            <span class="tag-count">{{ $count }}</span>
+        </a>
+    </li>
+    {{- end }}
+    {{- end }}
+</ul>
+{{- end }}
+
+{{- end }}{{/* end main */ -}}

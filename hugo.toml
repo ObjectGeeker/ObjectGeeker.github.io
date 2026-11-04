@@ -1,0 +1,76 @@
+baseURL = 'https://objectgeeker.github.io/'
+defaultContentLanguage = 'zh'
+title = 'Zephyr的技术空间'
+theme = 'hugo-PaperMod'
+
+[params]
+  env = "production"
+  description = "我的个人博客"
+  author = "Zephyr"
+  defaultTheme = "auto"
+  showBreadCrumbs = true
+  showReadingTime = true
+  showToc = true
+  showShareButtons = true
+  shareButtons = ["x", "telegram"]
+  ShowCodeCopyButtons = true
+  ShowPostNavLinks = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  TocOpen = false
+  
+  [params.homeInfoParams]
+    Title = "欢迎来到 Zephyr 的技术空间 👋"
+    Content = "这里记录我的技术探索、学习笔记和思考"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/ObjectGeeker"
+
+[params.assets]
+  disableHLJS = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+[menu]
+  [[menu.main]]
+    identifier = "categories"
+    pre = '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>'
+    name = "分类"
+    url = "/categories/"
+    weight = 3
+  [[menu.main]]
+    identifier = "tags"
+    pre = '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>'
+    name = "标签"
+    url = "/tags/"
+    weight = 4
+  [[menu.main]]
+    identifier = "archives"
+    pre = '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8M10 12h4"/></svg>'
+    name = "归档"
+    url = "/archives/"
+    weight = 5
+  [[menu.main]]
+    identifier = "search"
+    pre = '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
+    name = "搜索"
+    url = "/search/"
+    weight = 10
+  [[menu.main]]
+    identifier = "about"
+    pre = '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>'
+    name = "关于"
+    url = "/about/"
+    weight = 15
+
+[languages]
+  [languages.zh]
+    locale = 'zh-CN'
+    weight = 1
